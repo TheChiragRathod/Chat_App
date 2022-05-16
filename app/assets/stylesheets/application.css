@@ -14,5 +14,12 @@
  *= require_self
  */
  .card {
-  height: 500px;
+  height: 645px;
+}
+#messages{
+  height: 465px;
+  overflow: auto;
+}
+#send_button{
+  display: none;
 }

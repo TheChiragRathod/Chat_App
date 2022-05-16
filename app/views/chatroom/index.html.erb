@@ -1,49 +1,23 @@
-
 <div class="text-center mt-2">
     <%= image_tag("message.png", class: "img-fluid") %>
     <p>Say Something</p>
 </div>
 
-
 <div class="container">
   <div class="row">
-    <div class="col-8">
-      <div class="card">
+    <div class="col-12">
+      <div class="card mb-5">
         <div class="card-header">Chat</div>
         <div class="card-body height3">
-          <ul class="chat-list">
-            <div class="chat-body">
+          <div id="messages">
+            <div class="chat-body" id="message-container">
               <%= render @messages%>
             </div>
-          </ul>
-          <%= form_for(@message, url: message_path) do |f| %>
-            <%= f.text_field :body, class:"form-control"%>
-            <%= f.submit "Send", class:"btn btn-primary mt-2" %>
-          <% end %> 
-        </div>
-        
-      </div>
-    </div>
-
-    <div class="col">
-      <div class="row">
-       
-          <div class="col">
-            <div class="list-group" id="list-tab" role="tablist">
-              <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Home</a>
-              <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
-              <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Messages</a>
-              <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">Settings</a>
-            </div>
           </div>
-          <div class="col">
-            <div class="tab-content" id="nav-tabContent">
-              <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">...</div>
-              <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">...</div>
-              <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">...</div>
-              <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">...</div>
-            </div>
-         
+          <%= form_for(@message, url: message_path, remote: true) do |f| %>
+            <%= f.text_field :body, class:"form-control mt-3"%>
+            <%= f.submit "Send", class:"btn btn-primary mt-2", id:"send_button" %>
+          <% end %> 
         </div>
       </div>
     </div>
