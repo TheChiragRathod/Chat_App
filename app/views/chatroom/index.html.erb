@@ -16,7 +16,10 @@
               <%= render @messages%>
             </div>
           </ul>
-          <input class="form-control" type="text" placeholder="Enter message...">  
+          <%= form_for(@message, url: message_path) do |f| %>
+            <%= f.text_field :body, class:"form-control"%>
+            <%= f.submit "Send", class:"btn btn-primary mt-2" %>
+          <% end %> 
         </div>
         
       </div>
